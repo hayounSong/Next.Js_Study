@@ -1,7 +1,11 @@
+import {useState} from "react"
 export default function Home(){
-  return <div>
-    <h1>Hello</h1>
-  </div>
+  const [counter,setCounter] =useState<number>(0);
+  return (
+  <div>
+    <h1>Hello {counter}</h1>
+    <button onClick={()=>setCounter((prev):number=>prev+1)}>+</button>
+  </div>)
 }
 
 // 라이브러리는 개발자로써 불러와서 사용하는것, 프레임워크는 개발자의 코드를 불러오는 시스템이다.
