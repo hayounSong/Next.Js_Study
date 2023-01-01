@@ -2,18 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Seo from '../components/Seo';
 
 const API_KEY = 'd694e0e93cf7e09038bd1dd7160e3088';
-export default function Home() {
+export default function Home({ results }: any) {
   const [movies, setMovies] = useState<any[]>([]);
   useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch('/api/movies')).json();
-      setMovies(results);
-    })();
+    setMovies(results);
   }, []);
+
   return (
     <div className="container">
       <Seo title="Home" />
-      {!movies && <h4>Loading...</h4>}
       {movies?.map((movie) => (
         <div className="movie" key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
@@ -44,6 +41,16 @@ export default function Home() {
     </div>
   );
 }
+export async function getServerSideProps() {
+  const { results } = await (await fetch('http://localhost:3000/api/movies')).json();
+
+  return {
+    props: {
+      results,
+    },
+  };
+}
+//이건 백엔드에서만 작동하게된다.
 
 // 라이브러리는 개발자로써 불러와서 사용하는것, 프레임워크는 개발자의 코드를 불러오는 시스템이다.
 // 라이브러리는 사용하고 싶은대로, 사용하고 싶을때 사용가능하다. 언제 부를지, 어떤 폴더구조로 할지 마음대로 해도된다!(React)
