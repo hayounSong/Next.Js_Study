@@ -2,7 +2,7 @@ import Seo from 'components/Seo';
 import { useRouter } from 'next/router';
 export default function Detail({ params }: any) {
   const router = useRouter();
-  const [title, id]: any = params || [];
+  const [title, id] = params;
 
   return (
     <>
