@@ -22,6 +22,10 @@ const nextConfig = {
         source: '/api/movies',
         destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
       },
+      {
+        source: '/api/movies/:id',
+        destination: `https://api.themoviedb.org/3/movie/:id?api_key=${API_KEY}`,
+      },
     ];
     //rewrites는, 유저를 redirect 시키긴하지만, url은 변하지 않는다!
   },
