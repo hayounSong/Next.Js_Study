@@ -1,18 +1,19 @@
-import Link from "next/link"
-import { NextRouter, useRouter } from "next/router"
-export default function NavBar(){
-    const router:NextRouter=useRouter();
-    //현재 있는 페이지의 라우터 정보를 가져올 수 있다. 
-    return(
-        <nav>
-            <Link href="/">
-           <span style={{color:router.pathname==="/"?"red":"blue"}}>Home</span>
-           </Link>
+import Link from 'next/link';
+import { NextRouter, useRouter } from 'next/router';
+import React from 'react';
+import styles from './NavBar.module.css';
+export default function NavBar() {
+  const router: NextRouter = useRouter();
+  //현재 있는 페이지의 라우터 정보를 가져올 수 있다.
+  return (
+    <nav>
+      <Link href="/">
+        <span className={`${styles.link} ${router.pathname === '/' ? styles.active : ''}`}>Home</span>
+      </Link>
 
-           <Link href="/about">
-           <span  style={{color:router.pathname==="/about"?"red":"blue"}}>About</span>
-           </Link>
-           
-        </nav>
-    )
+      <Link href="/about">
+        <span className={`${styles.link} ${router.pathname === '/about' ? styles.active : ''}`}>About</span>
+      </Link>
+    </nav>
+  );
 }

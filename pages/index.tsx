@@ -1,13 +1,12 @@
-import NavBar from "../components/NavBar"
-
-export default function Home(){
-
+import NavBar from '../components/NavBar';
+import React from 'react';
+export default function Home() {
   return (
-  <div>
-    <NavBar></NavBar>
-    <h1>Hello </h1>
-
-  </div>)
+    <div>
+      <NavBar></NavBar>
+      <h1>Hello </h1>
+    </div>
+  );
 }
 
 // 라이브러리는 개발자로써 불러와서 사용하는것, 프레임워크는 개발자의 코드를 불러오는 시스템이다.
