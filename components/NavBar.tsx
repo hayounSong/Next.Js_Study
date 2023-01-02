@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import React from 'react';
+import { useRecoilState } from 'recoil';
+import { cookieState } from './state';
 export default function NavBar() {
   const router: NextRouter = useRouter();
+  const [cookie, setCookie] = useRecoilState(cookieState);
   //현재 있는 페이지의 라우터 정보를 가져올 수 있다.
   return (
     <nav>
       <img src="/vercel.svg" />
       <div>
+        {cookie}
         <Link href="/">
           <div className={router.pathname === '/' ? 'active' : ''}>Home</div>
         </Link>
