@@ -1,12 +1,15 @@
 import Layout from 'components/\bLayout';
-
+import { QueryClientProvider, QueryClient } from 'react-query';
 import React from 'react';
 export default function App({ Component, pageProps }: any) {
+  const queryClient = new QueryClient();
   return (
     <>
-      <Layout>
-        <Component {...pageProps}></Component>
-      </Layout>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps}></Component>
+        </Layout>
+      </QueryClientProvider>
     </>
   );
 }
